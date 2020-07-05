@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body { 
+  background: url(images/backg3.jpeg) repeat 0 0; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+footer, header {
+  width: 100%;
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border: azure;
+  border-style: ridge;
+}
+
+header > img {
+  height: 100%;
+  width: auto;
+  margin-left: 10%;
+}
+
+footer {
+  bottom: 0px;
+  position: fixed;
+}
+
+header > p {
+  margin-left: 60px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 40px;
+  color: #EDF5E1;
+  margin-left: 5%;
+  color: #05386B;
+}
+
+.meme-form, .meme {
+  margin-top: 5px;
+  margin-left: 20%;
+}
+
+.meme {
+  position: relative;
+  width: 70%;
+  margin: auto;
+  left: 15%;
+}
+
+.meme > img {
+  width: 50%;
+  height: auto;
+}
+
+.meme > .bottom {
+  bottom: 0;
+  left: 25%;
+}
+
+.meme > .top {
+  top: 0;
+  left: 25%;
+}
+
+.meme-form {
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  letter-spacing: 1.5px;
   color: white;
+  background: #05386B;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover{
+  background: white;
+  color: #05386B;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.meme-form > input {
+  width: 44%;
+  height: 30px;
+  border-style: none none none solid;
+  border-color: #05386B;
+  border-width: 3px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+}
+
+.meme > button {
+  margin-top: 10px;  
+  margin-left: 18%;
+}
+
+.meme > h2 {
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  margin: 40px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
 }
