@@ -16,7 +16,6 @@ class MemeGenerator extends Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onClick = this.onClick.bind(this);
         this.dragElement = this.dragElement.bind(this);
         this.handleScreenCapture = this.handleScreenCapture.bind(this);
     }
@@ -48,12 +47,9 @@ class MemeGenerator extends Component {
         this.setState({
             randomImage: newRandomImage,
             topText: "",
-            bottomText: ""
+            bottomText: "",
+            title: ""
         })
-    }
-
-    onClick() {
-        alert('Function currently no implemented.\nPlease take a screenshot of the page to save the content.');
     }
 
     // ==
@@ -106,7 +102,7 @@ class MemeGenerator extends Component {
     }
     // == 
 
-    handleScreenCapture = screenCapture => {
+    handleScreenCapture = screenCapture => {  
         this.setState(
             {
                 screenCapture
@@ -132,13 +128,18 @@ class MemeGenerator extends Component {
     };
 
     handleSave = () => {
-        console.log(this.state.title, this.state.screenCapture);
-        alert('in');
+        //Remove what comes before the encoded image
+        const base64 = this.state.screenCapture.split(",")[1];
+
+        //Source https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image
+        var a = document.createElement("a"); //Create <a>
+        a.href = "data:image/png;base64," + base64;
+        a.download = this.state.title; //File name
+        a.click(); //Downloaded file
     };
 
     render() {
         const { screenCapture } = this.state;
-        console.log(screenCapture);
         return (
             <ScreenCapture onEndCapture={this.handleScreenCapture}>
                 {({ onStartCapture }) => (
@@ -158,7 +159,7 @@ class MemeGenerator extends Component {
                                     <h2 id="inputBot" draggable="true" onDragStart={() => this.dragElement(2)}>{this.state.bottomText}</h2><br />
                                 </div>
                             </div>
-                            <button onClick={onStartCapture}>Export Image</button>
+                            <button onClick={onStartCapture}>Take a Screen Shot</button>
                         </div>
                         <Popup open={this.state.open} modal closeOnDocumentClick>
                             <div className="modal">
@@ -177,7 +178,7 @@ class MemeGenerator extends Component {
                                     </div>
                                     <div className="image__container">
                                         {screenCapture && (
-                                            <img src={screenCapture} alt="screen capture" />
+                                            <img src={screenCapture} alt="screen capture" id="img" />
                                         )}
                                     </div>
                                 </div>
